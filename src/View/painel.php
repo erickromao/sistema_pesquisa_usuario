@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION)){
+if (!isset($_SESSION)) {
     session_start();
 }
 require_once "../Model/autenticar.php";
@@ -18,10 +18,12 @@ $dataRegistro = $_SESSION["dataRegistro"];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="./css//painel.css">
+    <link rel="stylesheet" href="./css/painel.css">
 </head>
 
 <body>
+    <div id="errorMessages" style="display: none;" class="alert alert-danger">
+    </div>
     <div class="backgroundWhite">
         <div class="container">
             <div class="row">
@@ -48,7 +50,7 @@ $dataRegistro = $_SESSION["dataRegistro"];
                             <h3 class="panel-title">Email</h3>
                         </div>
                         <div class="panel-body">
-                        <?php echo $email ?>
+                            <?php echo $email ?>
                         </div>
                     </div>
                     <div class="panel panel-info">
@@ -56,7 +58,7 @@ $dataRegistro = $_SESSION["dataRegistro"];
                             <h3 class="panel-title">Data de criação</h3>
                         </div>
                         <div class="panel-body">
-                        <?php echo $dataRegistro ?>
+                            <?php echo $dataRegistro ?>
                         </div>
                     </div>
                 </div>
@@ -73,7 +75,7 @@ $dataRegistro = $_SESSION["dataRegistro"];
                 </div>
 
                 <div class="col-md-9 admin-content" id="change-password">
-                    <form action="/password" method="post">
+                    <form method="post" id="formPassword">
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Nova Senha</label></h3>
@@ -88,7 +90,7 @@ $dataRegistro = $_SESSION["dataRegistro"];
                         </div>
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><label for="new_password" class="control-label panel-title">Confirmar Senha</label></h3>
+                                <h3 class="panel-title"><label for="confirm_password" class="control-label panel-title">Confirmar Senha</label></h3>
                             </div>
                             <div class="panel-body">
                                 <div class="form-group">
@@ -101,7 +103,7 @@ $dataRegistro = $_SESSION["dataRegistro"];
 
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><label for="confirm_password" class="control-label panel-title">Senha antiga</label></h3>
+                                <h3 class="panel-title"><label for="old_password" class="control-label panel-title">Senha antiga</label></h3>
                             </div>
                             <div class="panel-body">
                                 <div class="form-group">

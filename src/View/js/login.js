@@ -1,5 +1,11 @@
 
 $(document).ready(function () {
+    $(document).on('click', function (event) {
+        if (!$(event.target).closest('#errorMessages').length) {
+            $('#errorMessages').hide();
+        }
+    });
+
     $('#formularioID').on('submit', function (e) {
         e.preventDefault();
         var formData = {
@@ -14,17 +20,13 @@ $(document).ready(function () {
             dataType: 'text',
             encode: true,
             success: function (response) {
-                if(response.includes("Login feito com sucesso!")){
+                if (response.includes("Login feito com sucesso!")) {
                     document.location.href = "./src/View/painel.php"
-                }else if(response.includes("E-mail ou senha incorreta!")){
+                } else if (response.includes("E-mail ou senha incorreta!")) {
                     $("#errorMessages").html("E-mail ou senha incorreta!");
                     $("#errorMessages").show();
                 }
 
-                $("#emailLoginID, #passwordLoginID").on('click', function (){
-                    $("#errorMessages").hide();
-                })
-                
             },
             error: function (error) {
                 console.log("Erro no AJAX: " + error);
