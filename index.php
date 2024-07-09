@@ -20,8 +20,8 @@
 </head>
 
 <body>
-<div id="errorMessages" style="display: none;" class="alert alert-danger">
-</div>
+	<div id="errorMessages" style="display: none;" class="alert alert-danger">
+	</div>
 	<div class="container">
 		<div class="row main">
 			<div class="panel-heading">
@@ -65,14 +65,15 @@
 	<script src="./src/View/js/login.js"></script>
 
 	<?php
-		if(!isset($_SESSION)){
-			session_start();
-		}
+	if (!isset($_SESSION)) {
+		session_start();
+	}
 
-		if(isset($_SESSION["id"])){
-			header("Location: ./src/View/painel.php");
-		}
+	if (isset($_SESSION["id"])) {
+		header("Location: ./src/View/painel.php");
+	}
 	?>
+
 </body>
 
 </html>

@@ -15,7 +15,6 @@ if (isset($_POST["usernameRegistro"]) && isset($_POST["emailRegistro"]) && isset
 
     if ($result->num_rows > 0) {
         die("Email já existente!");
-
     }
     $verifique_email->close();
 

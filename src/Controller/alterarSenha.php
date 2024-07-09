@@ -8,7 +8,7 @@ if (
     isset($_POST["new_password"]) && isset($_POST["confirm_password"])
     && isset($_POST["old_password"]) && isset($_SESSION["id"])
 ) {
-    
+
     $id = $_SESSION["id"];
     $new_password = $_POST["new_password"];
     $confirm_password = $_POST["confirm_password"];
@@ -17,7 +17,7 @@ if (
     if ($new_password != $confirm_password) {
         die("As novas senhas não conferem!");
     }
-   
+
     $sqlUserPassword = $mysqli->prepare("SELECT senha FROM usuarios WHERE id = ?");
     $sqlUserPassword->bind_param("i", $id);
 
@@ -38,12 +38,11 @@ if (
 
                 if ($sqlNewPassword->execute()) {
                     die("Senha atualizada com sucesso!");
-                   
                 } else {
                     die("Houve um erro ao atualizar a senha: " . $sqlNewPassword->error);
                 }
                 $sqlNewPassword->close();
-            }else{
+            } else {
                 die("Senha incorreta!");
             }
         }
@@ -52,4 +51,3 @@ if (
     }
     $sqlUserPassword->close();
 }
-   

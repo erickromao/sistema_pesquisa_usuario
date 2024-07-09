@@ -1,4 +1,35 @@
 $(document).ready(function () {
+
+  $.ajax({
+    type: 'POST',
+    url: '../Controller/isADM.php',
+    dataType: 'text',
+    encode: true,
+    success: function (response) {
+
+      switch (response) {
+        case "1":
+          $('#isAdmDiv').html('Sim');
+          $('#isAdmDiv').addClass('label-success');
+
+
+          $('#pesquisarPainel').html('<a href="./pesquisar.php" data-target-id="settings"><i class="fas fa-search"></i>Pesquisar usuário</a>');
+
+          break;
+        case "0":
+          $('#isAdmDiv').html('Não');
+          $('#isAdmDiv').addClass('label-danger');
+          break;
+      }
+
+
+
+    },
+    error: function (error) {
+      console.log("Erro no AJAX: " + error);
+    }
+  });
+
   $(document).on('click', function (event) {
     if (!$(event.target).closest('#errorMessages').length) {
       $('#errorMessages').hide();

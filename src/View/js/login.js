@@ -20,9 +20,11 @@ $(document).ready(function () {
             dataType: 'text',
             encode: true,
             success: function (response) {
+
                 if (response.includes("Login feito com sucesso!")) {
                     document.location.href = "./src/View/painel.php"
                 } else if (response.includes("E-mail ou senha incorreta!")) {
+
                     $("#errorMessages").html("E-mail ou senha incorreta!");
                     $("#errorMessages").show();
                 }

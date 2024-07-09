@@ -1,14 +1,11 @@
 <?php
-if (!isset($_SESSION)) {
-    session_start();
-}
 require_once "../Model/autenticar.php";
-$nome = $_SESSION["nome"];
-$email = $_SESSION["email"];
-$dataRegistro = $_SESSION["dataRegistro"];
+require_once "../Model/session.php"
+
 ?>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <!DOCTYPE html>
@@ -17,7 +14,7 @@ $dataRegistro = $_SESSION["dataRegistro"];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>Usuário painel</title>
     <link rel="stylesheet" href="./css/painel.css">
 </head>
 
@@ -30,6 +27,7 @@ $dataRegistro = $_SESSION["dataRegistro"];
                 <div class="col-md-3">
                     <ul class="nav nav-pills nav-stacked admin-menu">
                         <li class="active"><a href="" data-target-id="profile"><i class="glyphicon glyphicon-user"></i>Perfil</a></li>
+                        <li id="pesquisarPainel"></li>
                         <li><a href="" data-target-id="change-password"><i class="glyphicon glyphicon-lock"></i>Alterar Senha</a></li>
                         <li><a href="" data-target-id="settings"><i class="glyphicon glyphicon-cog"></i>Configurações</a></li>
                         <li><a href="../Model/logout.php" id="logout-link"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
@@ -69,7 +67,8 @@ $dataRegistro = $_SESSION["dataRegistro"];
                             <h3 class="panel-title">Admin</h3>
                         </div>
                         <div class="panel-body">
-                            <div class="label label-success">yes</div>
+                            <div class="label" id="isAdmDiv">
+                            </div>
                         </div>
                     </div>
                 </div>
