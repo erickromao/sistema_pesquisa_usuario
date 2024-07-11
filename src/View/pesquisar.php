@@ -22,7 +22,7 @@ require_once "../Model/autenticarADM.php";
             <div class="inputContainer">
                 <div class="input-group input-group-sm">
                     <span class="input-group-addon" id="logoModifier">Pesquisar Usuário(s)</span>
-                    <input type="text" class="form-control" placeholder="Pesquisar por... (ID, nome ou email)" id="searchField" name="searchFieldN">
+                    <input type="text" class="form-control" placeholder="Pesquisar por... (ID, nome ou email)" id="searchField" name="searchField">
                     <span class="input-group-btn">
                         <button class="btn btn-primary" type="button" id="searchButton" data-loading-text="Searching..">Pesquisar</button>
                         <a href="./painel.php" class="btn btn-primary" id="voltarID">Voltar</a>

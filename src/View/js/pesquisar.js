@@ -6,16 +6,27 @@ function enableInput() {
 
 }
 $(document).ready(function () {
-    // initEvents();
 
     $('#searchButton').on('click', function () {
 
+        let tipo;
+        const valorInput = $('#searchField').val();
+        if (valorInput.includes('@')) {
+            tipo = "email";
+        } else if (!isNaN(valorInput)) {
+            tipo = "id";
+        } else {
+            tipo = "nome";
+        }
+
+
         var formData = {
-            usernameRegistro: $('#searchField').val(),
+            tipo,
+            inputPesquisa: $('#searchField').val(),
         }
 
         $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: '../Controller/painelPesquisa.php',
             data: formData,
             dataType: 'json',
@@ -30,26 +41,23 @@ $(document).ready(function () {
                     '<th> Data</th>' +
                     '</tr>';
 
+                $('#deviceTable').append(headerPesquisa);
+
                 for (let i = 0; i < response.length; i++) {
                     var usuario = response[i];
-                    // console.log(usuario[i])
-                    // console.log(usuario[i+1])
-                    // console.log(usuario[i+2])
-                    // console.log(usuario[i+3])
 
                     var linha = '<tr>' +
-                        '<td>' + usuario[i] + '</td>' +
-                        '<td>' + usuario[i + 1] + '</td>' +
-                        '<td>' + usuario[i + 2] + '</td>' +
-                        '<td>' + (usuario[i + 3] ? 'Sim' : 'Não') + '</td>' +
-                        '<td>' + usuario[i + 4] + '</td>' +
+                        '<td>' + usuario[0] + '</td>' +
+                        '<td>' + usuario[1] + '</td>' +
+                        '<td>' + usuario[2] + '</td>' +
+                        '<td>' + (usuario[3] ? 'Sim' : 'Não') + '</td>' +
+                        '<td>' + usuario[4] + '</td>' +
                         '</tr>';
 
-                    console.log(linha)
-                    $('#deviceTable').append(headerPesquisa);
                     $('#deviceTable').append(linha);
                     
                 }
+
 
 
 
